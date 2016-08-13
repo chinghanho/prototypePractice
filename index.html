@@ -23,16 +23,17 @@
 			this.$target = document.getElementById('target')
 			this.$size = document.getElementById('size')
 
+			var that = this
+
 			this.$background.onclick = function () {
-				background()
+				that.background()
 			}
 			this.$border.onclick = function () {
-				border()
+				that.border()
 			}
 			this.$size.onclick = function () {
-				size()
+				that.size()
 			}
-
 		}
 		function background() {
 			this.$target.style.background = 'red'
@@ -47,7 +48,7 @@
 		Change.prototype.border = border
 		Change.prototype.size = size
 
-		Change()
+		new Change()
 	</script>
 </body>
 </html>
