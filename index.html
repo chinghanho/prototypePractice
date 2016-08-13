@@ -4,57 +4,50 @@
 	<meta charset="UTF-8">
 	<title>Document</title>
 </head>
+<style>
+	#target {
+		width: 200px;
+		height: 200px;
+		border: 1px solid #DDD;
+	}
+</style>
 <body>
-	<div class="wrapper">
-		<input type="text" id="number1" value="1" />
-		<span id="number2">1</span>
-		<div class="button">
-			<button id="minus">-</button>
-			<button id="plus">+</button>
-		</div>
-	</div>
+	<div id="target"></div>
+	<button id="background">Change Background</button>
+	<button id="border">Change Border</button>
+	<button id="size">Change Size</button>
 	<script>
+		function Change() {
+			this.$background = document.getElementById('background')
+			this.$border = document.getElementById('border')
+			this.$target = document.getElementById('target')
+			this.$size = document.getElementById('size')
 
-		function minusAndPlus() {
-		var	$number1 = document.getElementById('number1'),
-			$number2 = document.getElementById('number2'),
-			$minus = document.getElementById('minus'),
-			$plus = document.getElementById('plus');
-			$minus.onclick = function() {
-				minus()
+			this.$background.onclick = function () {
+				background()
 			}
+			this.$border.onclick = function () {
+				border()
+			}
+			this.$size.onclick = function () {
+				size()
+			}
+
 		}
-
-		minusAndPlus.prototype.plus = plus
-		minusAndPlus.prototype.minus = minus
-
-		function minus() {
-			var i = Number($number1.value)
-			if( i > 0 ) {
-			  var newValue = i - 1;
-			  $number1.value = newValue
-			  $number2.innerHTML = newValue
-			}
-			else {
-				return
-			}
+		function background() {
+			this.$target.style.background = 'red'
 		}
-		function plus() {
-			$plus.onclick = function() {
-				var i = Number($number1.value)
-				if( i < 0 ) {
-				  var newValue = i + 1;
-				  $number1.value = newValue
-				  $number2.innerHTML = newValue
-				}
-				else {
-					return
-				}
-			}
+		function border() {
+			this.$target.style.border = '10px solid green'
 		}
+		function size() {
+			this.$target.style.width = '500px'
+		}
+		Change.prototype.background = background
+		Change.prototype.border = border
+		Change.prototype.size = size
 
-		new minusAndPlus()
-
+		Change()
 	</script>
 </body>
 </html>
