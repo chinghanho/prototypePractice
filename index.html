@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div class="wrapper">
+		<input type="text" id="number1" value="1" />
+		<span id="number2">1</span>
+		<div class="button">
+			<button id="minus">-</button>
+			<button id="plus">+</button>
+		</div>
+	</div>
+	<script>
+
+		function minusAndPlus() {
+		var	$number1 = document.getElementById('number1'),
+			$number2 = document.getElementById('number2'),
+			$minus = document.getElementById('minus'),
+			$plus = document.getElementById('plus');
+			$minus.onclick = function() {
+				minus()
+			}
+		}
+
+		minusAndPlus.prototype.plus = plus
+		minusAndPlus.prototype.minus = minus
+
+		function minus() {
+			var i = Number($number1.value)
+			if( i > 0 ) {
+			  var newValue = i - 1;
+			  $number1.value = newValue
+			  $number2.innerHTML = newValue
+			}
+			else {
+				return
+			}
+		}
+		function plus() {
+			$plus.onclick = function() {
+				var i = Number($number1.value)
+				if( i < 0 ) {
+				  var newValue = i + 1;
+				  $number1.value = newValue
+				  $number2.innerHTML = newValue
+				}
+				else {
+					return
+				}
+			}
+		}
+
+		new minusAndPlus()
+
+	</script>
+</body>
+</html>
